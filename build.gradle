@@ -1,0 +1,59 @@
+plugins {
+    id 'java'
+    id 'war'
+    id "io.freefair.lombok" version "6.5.1"
+}
+
+group 'ru.clevertec'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+java {
+    sourceCompatibility = JavaLanguageVersion.of(17)
+    targetCompatibility = JavaLanguageVersion.of(17)
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+ext {
+    junitVersion = '5.10.1'
+    springVersion = '6.1.2'
+    log4jVersion = '2.17.2'
+    mapstructVersion = '1.6.0.Beta1'
+}
+
+dependencies {
+
+    implementation "org.springframework:spring-jdbc:${springVersion}"
+    implementation "org.springframework:spring-context:${springVersion}"
+    testImplementation "org.springframework:spring-test:${springVersion}"
+
+
+    implementation 'org.hibernate:hibernate-core:6.4.1.Final'
+    implementation 'org.hibernate.validator:hibernate-validator:8.0.1.Final'
+
+    implementation "org.apache.logging.log4j:log4j-api:${log4jVersion}"
+    implementation "org.apache.logging.log4j:log4j-core:${log4jVersion}"
+    implementation "org.apache.logging.log4j:log4j-slf4j-impl:${log4jVersion}"
+
+    implementation "org.mapstruct:mapstruct:${mapstructVersion}"
+    annotationProcessor "org.mapstruct:mapstruct-processor:${mapstructVersion}"
+
+    implementation 'com.zaxxer:HikariCP:5.0.1'
+    implementation 'org.postgresql:postgresql:42.5.4'
+
+    testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
+    testImplementation 'org.mockito:mockito-junit-jupiter:5.8.0'
+
+    implementation 'org.yaml:snakeyaml:2.2'
+}
+
+test {
+    useJUnitPlatform()
+}
