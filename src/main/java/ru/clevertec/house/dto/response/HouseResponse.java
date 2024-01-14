@@ -1,5 +1,6 @@
 package ru.clevertec.house.dto.response;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonAppend;
 import java.time.LocalDateTime;
@@ -29,7 +30,7 @@ public class HouseResponse {
     private String street;
 
     private String number;
-
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS")
     private LocalDateTime createDate;
 
     @JsonIgnore

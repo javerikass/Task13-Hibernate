@@ -9,7 +9,10 @@ dialect: org.hibernate.dialect.PostgreSQL95Dialect
 hibernate:
   show_sql: true
   format_sql: true
-  hbm2ddl.auto: update
+  hbm2ddl.auto: create-drop
+  hbm2ddl.import_files: db/import.sql
+  hbm2ddl.import_files_sql_extractor: org.hibernate.tool.schema.internal.script.MultiLineSqlScriptExtractor
   default_schema: clevertec_storage
+
 
 
